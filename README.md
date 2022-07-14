@@ -5,9 +5,9 @@ ITP IS Team 1
 ```
 python3 -m venv virtual
 source virtual/bin/activate
-pip3 install flask
+pip3 install -r requirements.txt
 ```
-Install all detector requirements in the virtual environment before proceeding to the next step.
+Ensure that all detector requirements have been installed in the virtual environment before proceeding to the next step.
 
 # Running Flask Web UI
 ```
