@@ -5,6 +5,7 @@ docker
 termcolor
 paramiko
 requests
+pandas
 bcrypt==3.2.0
 cffi==1.14.6
 cryptography==3.4.8
