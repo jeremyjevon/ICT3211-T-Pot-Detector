@@ -45,14 +45,20 @@ def index():
 
 @app.route('/log')
 def log():
-	# return render_template("log.html")
-	keys = ['detector', 'output']
-	log = []
-	with open('output.txt', 'r') as f:
-		for line in f:
-			row = line.split()
-			log.append(dict(zip(keys, [row[0], row[-1]])))
-	return render_template_string(TABLE_TEMPLATE, log=log)
+	logging = []
+	with open("output.txt", "r") as f:
+	    for line in f.readlines():
+	        logging.append(line.rstrip()) 
+	return render_template("log.html", logging=logging)
+
+
+	# keys = ['detector', 'output']
+	# log = []
+	# with open('output.txt', 'r') as f:
+	# 	for line in f:
+	# 		row = line.split()
+	# 		log.append(dict(zip(keys, [row[0], row[-1]])))
+	# return render_template_string(TABLE_TEMPLATE, log=log)
 
 @app.route('/about')
 def about():
