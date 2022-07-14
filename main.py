@@ -1,7 +1,43 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, render_template_string
+from time import sleep
 import os
+import pandas
 
 app = Flask(__name__)
+
+TABLE_TEMPLATE = """
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<table style="width: 100%">
+	<thead>
+		<th>Detector Selected</th>
+    	<th>Output</th>
+    </thead>
+    <tbody>
+    	{% for row in log %}
+    	<tr>
+        	<td>{{ row.detector }}</td>
+        	<td>{{ row.output }}</td>
+      	</tr>
+     	{% endfor %}
+    </tbody>
+</table>
+"""
 
 @app.route('/')
 def index():
@@ -9,7 +45,14 @@ def index():
 
 @app.route('/log')
 def log():
-	return render_template("log.html")
+	# return render_template("log.html")
+	keys = ['detector', 'output']
+	log = []
+	with open('output.txt', 'r') as f:
+		for line in f:
+			row = line.split()
+			log.append(dict(zip(keys, [row[0], row[-1]])))
+	return render_template_string(TABLE_TEMPLATE, log=log)
 
 @app.route('/about')
 def about():
@@ -49,8 +92,8 @@ def process():
 			f.close()
 		os_cmd10 = os.popen("python3 yogi.py").read()
 
-	os_cmd0 = os.chdir("../flaskapp")
-	with open("Output.txt", "w+") as f:
+	os_cmd0 = os.chdir("../ict3211-t-pot-detector")
+	with open("output.txt", "w+") as f:
 		f.write("Honeypot IP Address: " + ip_address + "\n")
 		f.write("Detectors Selected: " + detectors + "\n")
 		f.write(os_cmd2)
@@ -60,4 +103,12 @@ def process():
 		f.write(os_cmd10)
 		f.close()
 
-	return render_template("process.html", ip_address=ip_address)
+	# def generate():
+	# 	with open("output.txt") as f:
+	# 		while True:
+	# 			yield f.read()
+	# 			sleep(1)
+
+	# return app.response_class(generate(), mimetype='text/plain')
+
+	return render_template("process.html")
