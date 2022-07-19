@@ -1,124 +1,125 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+
+<head>
+    <!-- Required Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <title>Honeypot Detectors</title>
 
     <style>
-		table {
-		  font-family: arial, sans-serif;
-		  border-collapse: collapse;
-		  width: 100%;
-		}
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-		td, th {
-		  border: 1px solid #808080;
-		  text-align: left;
-		  padding: 8px;
-		}
+        td,
+        th {
+            border: 1px solid #808080;
+            text-align: left;
+            padding: 8px;
+        }
 
-		tr:nth-child(even) {
-		  background-color: #dddddd;
-		}
+        tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
 
-		td:empty {
-			display: none;
-		}
-		</style>
+        td:empty {
+            display: none;
+        }
+    </style>
 
-  </head>
-  <body>
-	<nav class="navbar navbar-expand-lg bg-light">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="/">T-Pot Detector</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link" href="/">Home</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="/logs">Logs</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="/about">About</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="/credits">Credits</a>
-	        </li>
-	    </div>
-	  </div>
-	</nav>
+</head>
 
-	<br>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">T-Pot Detector</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/logs">Logs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/credits">Credits</a>
+                    </li>
+            </div>
+        </div>
+    </nav>
 
-	<div class="container">
-  	<h1>Logs</h1>
-  	<br>
-  	<div class="table">
-  		<table>
-			  <tr>
-			  	<th>Honeypot IP Address:</th>
-			    <th>Detectors Selected:</th>
-			  </tr>
-			  <tr>
-			    <td>{{log_ip|join(':')}}</td>
-			    <td>{{log_detectors|join(':')}}</td>
-			  </tr>
-			</table>
-		</div>
-  </div>
+    <br>
 
-  <br>
+    <div class="container">
+        <h1>Logs</h1>
+        <br>
+        <div class="table">
+            <table>
+                <tr>
+                    <th>Honeypot IP Address:</th>
+                    <th>Detectors Selected:</th>
+                </tr>
+                <tr>
+                    <td>{{log_ip|join(':')}}</td>
+                    <td>{{log_detectors|join(':')}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-	<div class="container">
-  	<div class="table">
-  		<table>
-			  <tr>
-			    <th>Detector</th>
-			    <th>Output</th>
-			  </tr>
-			  <tr>
-			    <td>{{header_checkpot|join(':')}}</td>
-			    <td>{{log_checkpot|join(':')}}</td>
-			  </tr>
-			  <tr>
-			    <td>{{header_honeybee|join(':')}}</td>
-			    <td>{{log_honeybee|join(':')}}</td>
-			  </tr>
-			  <tr>
-			    <td>{{header_detectkippocowrie|join(':')}}</td>
-			    <td>{{log_detectkippocowrie|join(':')}}</td>
-			  </tr>
-			  <tr>
-			    <td>{{header_honeydetect|join(':')}}</td>
-			    <td>{{log_honeydetect|join(':')}}</td>
-			  </tr>
-			  <tr>
-			    <td>{{header_yogi|join(':')}}</td>
-			    <td>{{log_yogi|join(':')}}</td>
-			  </tr>
-			</table>
-		</div>
-  </div>
+    <br>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <div class="container">
+        <div class="table">
+            <table>
+                <tr>
+                    <th>Detector</th>
+                    <th>Output</th>
+                </tr>
+                <tr>
+                    <td>{{header_checkpot|join(':')}}</td>
+                    <td>{{log_checkpot|join(':')}}</td>
+                </tr>
+                <tr>
+                    <td>{{header_honeybee|join(':')}}</td>
+                    <td>{{log_honeybee|join(':')}}</td>
+                </tr>
+                <tr>
+                    <td>{{header_detectkippocowrie|join(':')}}</td>
+                    <td>{{log_detectkippocowrie|join(':')}}</td>
+                </tr>
+                <tr>
+                    <td>{{header_honeydetect|join(':')}}</td>
+                    <td>{{log_honeydetect|join(':')}}</td>
+                </tr>
+                <tr>
+                    <td>{{header_yogi|join(':')}}</td>
+                    <td>{{log_yogi|join(':')}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
-    -->
-  </body>
 </html>

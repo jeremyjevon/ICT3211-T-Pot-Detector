@@ -24,49 +24,53 @@ def logs():
 
 	if os.stat("log_checkpot.txt").st_size != 1:
 		header_checkpot.append("Checkpot")
+
 	if os.stat("log_honeybee.txt").st_size != 1:
 		header_honeybee.append("Honeybee")
+
 	if os.stat("log_detectkippocowrie.txt").st_size != 1:
 		header_detectkippocowrie.append("Detect-Kippo-Cowrie")
+
 	if os.stat("log_honeydetect.txt").st_size != 1:
 		header_honeydetect.append("Honeydetect")
+
 	if os.stat("log_yogi.txt").st_size != 1:
 		header_yogi.append("Yogi")
 
 	with open("log_ip.txt", "r") as f:
-	    for line in f.readlines():
-	        log_ip.append(line.rstrip())
-	    f.close()
+		for line in f.readlines():
+			log_ip.append(line.rstrip())
+		f.close()
 
 	with open("log_detectors.txt", "r") as f:
-	    for line in f.readlines():
-	        log_detectors.append(line.rstrip())
-	    f.close()
+		for line in f.readlines():
+			log_detectors.append(line.rstrip())
+		f.close()
 
 	with open("log_checkpot.txt", "r") as f:
-	    for line in f.readlines():
-	        log_checkpot.append(line.rstrip())
-	    f.close()
+		for line in f.readlines():
+			log_checkpot.append(line.rstrip())
+		f.close()
 
 	with open("log_honeybee.txt", "r") as f:
-	    for line in f.readlines():
-	        log_honeybee.append(line.rstrip())
-	    f.close()
+		for line in f.readlines():
+			log_honeybee.append(line.rstrip())
+		f.close()
 
 	with open("log_detectkippocowrie.txt", "r") as f:
-	    for line in f.readlines():
-	        log_detectkippocowrie.append(line.rstrip())
-	    f.close()
+		for line in f.readlines():
+			log_detectkippocowrie.append(line.rstrip())
+		f.close()
 
 	with open("log_honeydetect.txt", "r") as f:
-		    for line in f.readlines():
-		        log_honeydetect.append(line.rstrip())
-		    f.close()
+		for line in f.readlines():
+			log_honeydetect.append(line.rstrip())
+		f.close()
 
 	with open("log_yogi.txt", "r") as f:
-	    for line in f.readlines():
-	        log_yogi.append(line.rstrip())
-	    f.close()
+		for line in f.readlines():
+			log_yogi.append(line.rstrip())
+		f.close()
 
 	return render_template("logs.html", log_ip=log_ip, log_detectors=log_detectors, header_checkpot=header_checkpot, header_honeybee=header_honeybee, header_detectkippocowrie=header_detectkippocowrie, header_honeydetect=header_honeydetect, header_yogi=header_yogi, log_checkpot=log_checkpot, log_honeybee=log_honeybee, log_detectkippocowrie=log_detectkippocowrie, log_honeydetect=log_honeydetect, log_yogi=log_yogi)
 
@@ -89,18 +93,22 @@ def process():
 	if 'Checkpot' in detectorArray: 
 		os.chdir("../checkpot")
 		os_cmd1 = os.popen("python3 checkpot.py -t " + ip_address + " -l 3").read()
+
 	if 'Honeybee' in detectorArray: 
 		os.chdir("../honeybee")
 		os_cmd2 = os.popen("python3 glastopf.py " + ip_address).read()
+
 	if 'Detect-Kippo-Cowrie' in detectorArray: 
 		os.chdir("../detect-kippo-cowrie")
 		os_cmd3 = os.popen("python3 detectKippoCowrie.py " + ip_address + " 22").read()
+
 	if 'Honeydetect' in detectorArray: 
 		os.chdir("../honeydetect")
 		with open("addresses.txt", "w+") as f:
 			f.write(ip_address)
 			f.close()
 		os_cmd4 = os.popen("./honeydetect").read()
+
 	if 'Yogi' in detectorArray: 
 		os.chdir("../yogi")
 		with open("host_list.txt", "w+") as f:
@@ -112,7 +120,6 @@ def process():
 	# os.chdir("../ICT3211-T-Pot-Detector")
 
 	with open("log_ip.txt", "w+") as f:
-
 		f.write(ip_address)
 		f.close()
 
