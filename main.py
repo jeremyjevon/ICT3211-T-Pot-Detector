@@ -7,8 +7,8 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html")
 
-@app.route('/log')
-def log():
+@app.route('/logs')
+def logs():
 	log_ip = []
 	log_detectors = []
 	log_checkpot = []
@@ -68,7 +68,7 @@ def log():
 	        log_yogi.append(line.rstrip())
 	    f.close()
 
-	return render_template("log.html", log_ip=log_ip, log_detectors=log_detectors, header_checkpot=header_checkpot, header_honeybee=header_honeybee, header_detectkippocowrie=header_detectkippocowrie, header_honeydetect=header_honeydetect, header_yogi=header_yogi, log_checkpot=log_checkpot, log_honeybee=log_honeybee, log_detectkippocowrie=log_detectkippocowrie, log_honeydetect=log_honeydetect, log_yogi=log_yogi)
+	return render_template("logs.html", log_ip=log_ip, log_detectors=log_detectors, header_checkpot=header_checkpot, header_honeybee=header_honeybee, header_detectkippocowrie=header_detectkippocowrie, header_honeydetect=header_honeydetect, header_yogi=header_yogi, log_checkpot=log_checkpot, log_honeybee=log_honeybee, log_detectkippocowrie=log_detectkippocowrie, log_honeydetect=log_honeydetect, log_yogi=log_yogi)
 
 @app.route('/about')
 def about():
@@ -109,6 +109,7 @@ def process():
 		os_cmd5 = os.popen("python3 yogi.py").read()
 
 	os.chdir("../ict3211-t-pot-detector")
+	# os.chdir("../ICT3211-T-Pot-Detector")
 
 	with open("log_ip.txt", "w+") as f:
 
