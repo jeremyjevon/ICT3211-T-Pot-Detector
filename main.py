@@ -1,7 +1,5 @@
-from flask import Flask, render_template, request, render_template_string
-from time import sleep
+from flask import Flask, render_template, request
 import os
-import pandas
 
 app = Flask(__name__)
 
@@ -44,10 +42,15 @@ def log():
 	        log_detectkippocowrie.append(line.rstrip())
 	    f.close()
 
+	if os.stat("log_honeydetect.txt").st_size == 0:
+		with open("log_honeydetect.txt", "w+") as f:
+			f.write("file is empty")
+			f.close()
+
 	with open("log_honeydetect.txt", "r") as f:
-	    for line in f.readlines():
-	        log_honeydetect.append(line.rstrip())
-	    f.close()
+		    for line in f.readlines():
+		        log_honeydetect.append(line.rstrip())
+		    f.close()
 
 	with open("log_yogi.txt", "r") as f:
 	    for line in f.readlines():
@@ -94,9 +97,10 @@ def process():
 			f.close()
 		os_cmd5 = os.popen("python3 yogi.py").read()
 
-	os.chdir("../ICT3211-T-Pot-Detector")
+	os.chdir("../ict3211-t-pot-detector")
 
 	with open("log_ip.txt", "w+") as f:
+
 		f.write(ip_address)
 		f.close()
 

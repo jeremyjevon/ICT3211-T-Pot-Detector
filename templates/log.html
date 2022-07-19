@@ -66,8 +66,8 @@
 				    <th>Detectors Selected:</th>
 				  </tr>
 				  <tr>
-				    <td>{{log_ip}}</td>
-				    <td>{{log_detectors}}</td>
+				    <td>{{log_ip|join(':')}}</td>
+				    <td>{{log_detectors|join(':')}}</td>
 				  </tr>
 				</table>
 			</div>
@@ -84,23 +84,23 @@
 				  </tr>
 				  <tr>
 				    <td>Checkpot</td>
-				    <td>{{log_checkpot}}</td>
+				    <td>{{log_checkpot|join(':')}}</td>
 				  </tr>
 				  <tr>
 				    <td>Honeybee</td>
-				    <td>{{log_honeybee}}</td>
+				    <td>{{log_honeybee|join(':')}}</td>
 				  </tr>
 				  <tr>
 				    <td>Detect-Kippo-Cowrie</td>
-				    <td>{{log_detectkippocowrie}}</td>
+				    <td>{{log_detectkippocowrie|join(':')}}</td>
 				  </tr>
 				  <tr>
 				    <td>Honeydetect</td>
-				    <td>{{log_honeydetect}}</td>
+				    <td>{{log_honeydetect|join(':')}}</td>
 				  </tr>
 				  <tr>
 				    <td>Yogi</td>
-				    <td>{{log_yogi}}</td>
+				    <td>{{log_yogi|join(':')}}</td>
 				  </tr>
 				</table>
 			</div>
