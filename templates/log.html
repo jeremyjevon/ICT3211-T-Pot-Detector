@@ -26,6 +26,10 @@
 		tr:nth-child(even) {
 		  background-color: #dddddd;
 		}
+
+		td:empty {
+			display: none;
+		}
 		</style>
 
   </head>
@@ -83,23 +87,23 @@
 				    <th>Output</th>
 				  </tr>
 				  <tr>
-				    <td>Checkpot</td>
+				    <td>{{header_checkpot|join(':')}}</td>
 				    <td>{{log_checkpot|join(':')}}</td>
 				  </tr>
 				  <tr>
-				    <td>Honeybee</td>
+				    <td>{{header_honeybee|join(':')}}</td>
 				    <td>{{log_honeybee|join(':')}}</td>
 				  </tr>
 				  <tr>
-				    <td>Detect-Kippo-Cowrie</td>
+				    <td>{{header_detectkippocowrie|join(':')}}</td>
 				    <td>{{log_detectkippocowrie|join(':')}}</td>
 				  </tr>
 				  <tr>
-				    <td>Honeydetect</td>
+				    <td>{{header_honeydetect|join(':')}}</td>
 				    <td>{{log_honeydetect|join(':')}}</td>
 				  </tr>
 				  <tr>
-				    <td>Yogi</td>
+				    <td>{{header_yogi|join(':')}}</td>
 				    <td>{{log_yogi|join(':')}}</td>
 				  </tr>
 				</table>

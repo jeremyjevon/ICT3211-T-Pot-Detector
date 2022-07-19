@@ -16,6 +16,22 @@ def log():
 	log_detectkippocowrie = []
 	log_honeydetect = []
 	log_yogi = []
+	header_checkpot = []
+	header_honeybee = []
+	header_detectkippocowrie = []
+	header_honeydetect = []
+	header_yogi = []
+
+	if os.stat("log_checkpot.txt").st_size != 1:
+		header_checkpot.append("Checkpot")
+	if os.stat("log_honeybee.txt").st_size != 1:
+		header_honeybee.append("Honeybee")
+	if os.stat("log_detectkippocowrie.txt").st_size != 1:
+		header_detectkippocowrie.append("Detect-Kippo-Cowrie")
+	if os.stat("log_honeydetect.txt").st_size != 1:
+		header_honeydetect.append("Honeydetect")
+	if os.stat("log_yogi.txt").st_size != 1:
+		header_yogi.append("Yogi")
 
 	with open("log_ip.txt", "r") as f:
 	    for line in f.readlines():
@@ -42,11 +58,6 @@ def log():
 	        log_detectkippocowrie.append(line.rstrip())
 	    f.close()
 
-	if os.stat("log_honeydetect.txt").st_size == 0:
-		with open("log_honeydetect.txt", "w+") as f:
-			f.write("file is empty")
-			f.close()
-
 	with open("log_honeydetect.txt", "r") as f:
 		    for line in f.readlines():
 		        log_honeydetect.append(line.rstrip())
@@ -57,7 +68,7 @@ def log():
 	        log_yogi.append(line.rstrip())
 	    f.close()
 
-	return render_template("log.html", log_ip=log_ip, log_detectors=log_detectors, log_checkpot=log_checkpot, log_honeybee=log_honeybee, log_detectkippocowrie=log_detectkippocowrie, log_honeydetect=log_honeydetect, log_yogi=log_yogi)
+	return render_template("log.html", log_ip=log_ip, log_detectors=log_detectors, header_checkpot=header_checkpot, header_honeybee=header_honeybee, header_detectkippocowrie=header_detectkippocowrie, header_honeydetect=header_honeydetect, header_yogi=header_yogi, log_checkpot=log_checkpot, log_honeybee=log_honeybee, log_detectkippocowrie=log_detectkippocowrie, log_honeydetect=log_honeydetect, log_yogi=log_yogi)
 
 @app.route('/about')
 def about():
