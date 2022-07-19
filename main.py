@@ -86,22 +86,22 @@ def process():
 	
 	os_cmd1 = os_cmd2 = os_cmd3 = os_cmd4 = os_cmd5 = " "
 
-	if 'checkpot' in detectorArray: 
+	if 'Checkpot' in detectorArray: 
 		os.chdir("../checkpot")
 		os_cmd1 = os.popen("python3 checkpot.py -t " + ip_address + " -l 3").read()
-	if 'honeybee' in detectorArray: 
+	if 'Honeybee' in detectorArray: 
 		os.chdir("../honeybee")
 		os_cmd2 = os.popen("python3 glastopf.py " + ip_address).read()
-	if 'detect-kippo-cowrie' in detectorArray: 
+	if 'Detect-Kippo-Cowrie' in detectorArray: 
 		os.chdir("../detect-kippo-cowrie")
 		os_cmd3 = os.popen("python3 detectKippoCowrie.py " + ip_address + " 22").read()
-	if 'honeydetect' in detectorArray: 
+	if 'Honeydetect' in detectorArray: 
 		os.chdir("../honeydetect")
 		with open("addresses.txt", "w+") as f:
 			f.write(ip_address)
 			f.close()
 		os_cmd4 = os.popen("./honeydetect").read()
-	if 'yogi' in detectorArray: 
+	if 'Yogi' in detectorArray: 
 		os.chdir("../yogi")
 		with open("host_list.txt", "w+") as f:
 			f.write(ip_address)
